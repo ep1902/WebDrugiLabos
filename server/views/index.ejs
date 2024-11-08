@@ -1,0 +1,47 @@
+<h1>XSS(reflektirani)</h1>
+<h2>Upute:</h2>
+<p>
+  Ovo je tipični primjer XSS napada. Korisnikov unos se sanetizira (ako je
+  onemogućen napad odnosno ako checkbox Enable attack nije odabran) i uklanjaju
+  se opasnosti malicioznih skripti. Ako je checkbox odabran ne vrši se
+  sanetizacija ulaznog teksta i omogućeni su napadi XSS.
+</p>
+<form action="/submitXSS" method="POST">
+  <label for="userInput">Enter something:</label>
+  <input type="text" name="userInput" id="userInput" required />
+  <button type="submit">Submit</button>
+  <input
+    type="checkbox"
+    id="attackCheckbox"
+    name="attackCheckbox"
+    value="true"
+  />
+  <label for="attackCheckbox">Enable attack</label>
+</form>
+
+<h1>Sensitive Data Exposure</h1>
+<h2>Upute:</h2>
+<p>
+  Ovo je primjer jednog tipa SDA u kojem je nesigurna pohrana kreirana tako što
+  je ispod prikazana forma za registraciju korisnika. Kada korisnik upiše
+  podatke za registraciju ti podatci se spremaju u bazu. Ako je odabran checkbox
+  Enable attack, korisnička lozinka će u bazu podataka biti spremljena kao
+  izvorni text. U suprotnom ako nije odabran checkbox lozinka će biti spremljena
+  kao kriptirani oblik lozinke. Nakon unosa podataka korisniku će se prikazati
+  stranica sa njegovim podatcima iz baze kako bi prikazali na koji su način
+  spremljene.
+</p>
+<form action="/submitSDE" method="POST">
+  <label for="userInputUsername">Enter username:</label>
+  <input type="text" name="userInputUsername" id="userInputUsername" required />
+  <label for="userInputPassword">Enter password:</label>
+  <input type="text" name="userInputPassword" id="userInputPassword" required />
+  <button type="submit">Submit</button>
+  <input
+    type="checkbox"
+    id="attackCheckbox"
+    name="attackCheckbox"
+    value="true"
+  />
+  <label for="attackCheckbox">Enable attack</label>
+</form>
